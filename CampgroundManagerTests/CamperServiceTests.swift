@@ -7,8 +7,13 @@
 //
 
 import XCTest
+import CampgroundManager
+import CoreData
 
 class CamperServiceTests: XCTestCase {
+  
+  var camperService: CamperService!
+  var coreDataStack: CoreDataStack!
     
     override func setUp() {
         super.setUp()
