@@ -18,6 +18,9 @@ class CamperServiceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+      
+      coreDataStack = TestCoreDataStack()
+      camperService = CamperService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
     }
     
     override func tearDown() {
