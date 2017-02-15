@@ -12,6 +12,10 @@ import CoreData
 
 class TestCoreDataStack: CoreDataStack {
   
+  convenience init() {
+    self.init(modelName: "CampgroundManager")
+  }
+  
   override init(modelName: String) {
     super.init(modelName: modelName)
     
