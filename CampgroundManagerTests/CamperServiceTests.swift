@@ -30,5 +30,13 @@ class CamperServiceTests: XCTestCase {
       camperService = nil
       coreDataStack = nil
     }
+  
+  func testAddCamper() {
     
+    let camper = camperService.addCamper("Bacon Lover", phoneNumber: "910-543-9000")
+    
+    XCTAssertNotNil(camper, "Camper should not be nil")
+    XCTAssertTrue(camper?.fullName == "Bacon Lover")
+    XCTAssertTrue(camper?.phoneNumber == "910-543-9000")
+  }
 }
