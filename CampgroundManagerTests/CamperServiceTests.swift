@@ -39,4 +39,9 @@ class CamperServiceTests: XCTestCase {
     XCTAssertTrue(camper?.fullName == "Bacon Lover")
     XCTAssertTrue(camper?.phoneNumber == "910-543-9000")
   }
+  
+  func testRootContextIsSavedAfterAddingCamper() {
+    
+  }
+
 }
