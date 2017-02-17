@@ -42,6 +42,8 @@ class CamperServiceTests: XCTestCase {
   
   func testRootContextIsSavedAfterAddingCamper() {
     
+    let derivedContext = coreDataStack.newDerivedContext()
+    camperService = CamperService(managedObjectContext: derivedContext, coreDataStack: coreDataStack)
   }
 
 }
