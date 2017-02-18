@@ -52,6 +52,10 @@ class CamperServiceTests: XCTestCase {
     
     let camper = camperService.addCamper("Bacon Lover", phoneNumber: "910-543-9000")
     XCTAssertNotNil(camper)
+    
+    waitForExpectations(timeout: 2.0) { error in
+      XCTAssertNil(error, "Save did not occur")
+    }
   }
-
+  
 }
