@@ -49,6 +49,9 @@ class CamperServiceTests: XCTestCase {
       notification in
       return true
     }
+    
+    let camper = camperService.addCamper("Bacon Lover", phoneNumber: "910-543-9000")
+    XCTAssertNotNil(camper)
   }
 
 }
