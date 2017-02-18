@@ -44,6 +44,11 @@ class CamperServiceTests: XCTestCase {
     
     let derivedContext = coreDataStack.newDerivedContext()
     camperService = CamperService(managedObjectContext: derivedContext, coreDataStack: coreDataStack)
+    
+    expectation(forNotification: NSNotification.Name.NSManagedObjectContextDidSave.rawValue, object: coreDataStack.mainContext) {
+      notification in
+      return true
+    }
   }
 
 }
