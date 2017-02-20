@@ -40,5 +40,24 @@ class CampSiteServiceTests: XCTestCase {
     XCTAssertTrue(campSite.electricity!.boolValue, "Site number should have electricity")
     XCTAssertTrue(campSite.water!.boolValue, "Site should have water")
   }
+  
+  func testRootContextIsSavedAfterAddingCampsite() {
     
+    let derivedContext = coreDataStack.newDerivedContext()
+    
+    campSiteService = CampSiteService(managedObjectContext: derivedContext, coreDataStack: coreDataStack)
+    
+    expectation(forNotification: NSNotification.Name.NSManagedObjectContextDidSave.rawValue, object: coreDataStack.mainContext) {
+      notification in
+      return true
+    }
+    
+    let campSite = campSiteService.addCampSite(1, electricity: true, water: true)
+    XCTAssertNotNil(campSite)
+    
+    waitForExpectations(timeout: 2.0) { error in
+      XCTAssertNil(error, "Save did not occur")
+    }
+  }
+  
 }
