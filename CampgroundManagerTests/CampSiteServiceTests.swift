@@ -31,5 +31,14 @@ class CampSiteServiceTests: XCTestCase {
       campSiteService = nil
       coreDataStack = nil
     }
+  
+  func testAddCampSite() {
+    
+    let campSite = campSiteService.addCampSite(1, electricity: true, water: true)
+    
+    XCTAssertTrue(campSite.siteNumber == 1, "Site number should be 1")
+    XCTAssertTrue(campSite.electricity!.boolValue, "Site number should have electricity")
+    XCTAssertTrue(campSite.water!.boolValue, "Site should have water")
+  }
     
 }
