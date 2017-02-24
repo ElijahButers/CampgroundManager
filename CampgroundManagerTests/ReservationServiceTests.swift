@@ -36,5 +36,17 @@ class ReservationServiceTests: XCTestCase {
       reservationService = nil
       coreDataStack = nil
     }
+  
+  func testReserveCampSitePositiveNumberOfDays() {
+    
+    let camper = camperService.addCamper("Johnny Appleseed", phoneNumber: "408-555-1234")!
+    let campSite = campSiteService.addCampSite(15, electricity: false, water: false)
+    
+    let result = reservationService.reserveCampSite(campSite, camper: camper, date: Date(), numberOfNights: 5)
+    
+    XCTAssertNotNil(result.reservation, "Reservation should not be nill")
+    XCTAssertNil(result.error, "No error should be present")
+    XCTAssertTrue(result.reservation?.status == "Reserved", "Status should be reserved")
+  }
     
 }
