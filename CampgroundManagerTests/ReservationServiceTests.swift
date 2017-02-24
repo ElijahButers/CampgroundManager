@@ -57,7 +57,7 @@ class ReservationServiceTests: XCTestCase {
     let result = reservationService!.reserveCampSite(campSite, camper: camper, date: Date(), numberOfNights: -1)
     
     XCTAssertNotNil(result.reservation, "Reservation should not be nill")
-    XCTAssertNil(result.error, "No error should be present")
+    XCTAssertNotNil(result.error, "No error should be present")
     XCTAssertTrue(result.error?.userInfo["Problem"] as? String == "Invalid number of days", "Error problem should be present")
     XCTAssertTrue(result.reservation?.status == "Invalid", "Status should be Invalid")
   }
